@@ -1,3 +1,4 @@
+ 
 <?php
 Class LoginTest extends PHPUnit_Extensions_Selenium2TestCase {
     protected function setUp()
@@ -13,7 +14,11 @@ Class LoginTest extends PHPUnit_Extensions_Selenium2TestCase {
         $password = $this->byId("password");
         $password->value('tester');
         $this->byName('login')->click();
-        $this-ByClassName("plugbottom");
+
+        // if GPG error modal
+        $gpg = $this->ByClassName("plugbottom")->byTag("input")->click();
+
+     
         $this->ById("menuitem_icon_userManagement")->click();
         $this->ById("root")->click();
         $this->ById("root")->byTag("li")->click();
@@ -29,10 +34,14 @@ Class LoginTest extends PHPUnit_Extensions_Selenium2TestCase {
   ;
         
         
-     
-        
+
+
     }
+
+    
     /**
+     * 
+     * OLDER TEST
    * \fn Function that click in the menu
    * \param[in] action the action that we will do
    */
